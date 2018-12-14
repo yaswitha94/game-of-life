@@ -6,4 +6,7 @@ node {
     stage('compile') {
         sh 'mvn package'
     }
+    stage('archive') {
+        archiveArtifacts 'gameoflife-web/target/*.war'
+    }
 }
