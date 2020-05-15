@@ -1,12 +1,17 @@
-node {
-    stage('git') {
-       // some block
-       git 'https://github.com/GitPracticeRepo/game-of-life.git'
+node('REDHAT'){
+    stage('scm'){
+        git 'https://github.com/wakaleo/game-of-life.git'
     }
-    stage('compile') {
-        sh 'mvn package'
+
+    stage('build'){
+        sh label: '', script: 'mvn package'
+
     }
-    stage('archive') {
+
+    stage('postbuild'){
+        junit 'gameoflife-web/target/surefire-reports/*.xml'
         archiveArtifacts 'gameoflife-web/target/*.war'
+        
     }
+
 }
