@@ -4,6 +4,7 @@ pipeline {
         choice(name: 'BRANCH_TO_BUILD', choices: ['master', 'parameter_1'], description: 'Pick something')
         string(name: 'MAVEN_GOAL', defaultValue: 'package', description: 'Select maven goal')
     }
+    tool name: 'java8', type: 'jdk'
     stages {
         stage('vcs') {
             steps {
