@@ -5,7 +5,7 @@ pipeline {
         string(name: 'MAVEN_GOAL', defaultValue: 'package', description: 'Select maven goal')
     }
    tools {
-        java 'java-8-openjdk' 
+        java '/usr/lib/jvm/java-8-openjdk-amd64' 
     }
     stages {
         stage('vcs') {
