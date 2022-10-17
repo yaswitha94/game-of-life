@@ -9,7 +9,7 @@ steps:
   - task: Maven@3
     inputs:
       mavenPomFile: 'pom.xml'
-      goals: 'package'
+      goals: 'clean install'
       publishJUnitResults: yes
       testResultsFiles: '**/surefire-reports/TEST-*.xml'
       jdkVersionOption: '1.8'
