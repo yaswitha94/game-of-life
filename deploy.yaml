@@ -23,6 +23,8 @@ spec:
       containers:
         - name: gol
           image: gol:1.0
+      imagePullSecrets:
+        - name: mycred
           ports:
             - containerPort: 8080
               protocol: TCP
