@@ -13,6 +13,14 @@ pipeline {
                 sh 'docker image push yaswithaa/gol:1.0'
             }
         }
+        stage('cluster'){
+            steps{
+                sh 'az group create --name myResourceGroup --location eastus'
+                sh 'az aks create -g myResourceGroup -n myAKSCluster --enable-managed-identity --node-count 1 --enable-addons monitoring --enable-msi-auth-for-monitoring  --generate-ssh-keys'
+                sh 'az aks install-cli'
+                sh 'az aks get-credentials --resource-group myResourceGroup --name myAKSCluster'
+            }
+        }
     }
 }
 
